@@ -73,16 +73,29 @@ export default class FieldsStore {
   }
 
   get url() {
-    const id = this.selectedField ? this.selectedField.id : "524901";
-    return `http://api.openweathermap.org/data/2.5/forecast?id=${id}&appid=${API_KEY}`;
+    const lat = this.selectedField ? this.selectedField.latLon.lat : "44.9676";
+    const lon = this.selectedField ? this.selectedField.latLon.lon : "12.5757";
+    return `http://api.openweathermap.org/data/2.5/forecast?lat=${44.0678}&lon=${12.5695}&APPID=${API_KEY}`;
   }
 
+  // get url() {
+  //   const lat = this.selectedField ? this.selectedField.latLon.lat : "44.9676";
+  //   const lon = this.selectedField ? this.selectedField.latLon.lon : "12.5757";
+  //   return `http://api.openweathermap.org/data/2.5/forecast?lat=${43.967605}&lon=${12.5757028}&APPID=${API_KEY}`;
+  // }
+
+  forecast;
+  // setForecast = d => (this.forecast = d);
   fetchWeather() {
     this.isLoading = true;
     return axios
       .get(this.url)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
+        this.forecast = {
+          list: res.data.list,
+          city: res.data.city
+        };
         this.isLoading = false;
       })
       .catch(err => {
@@ -170,5 +183,6 @@ decorate(FieldsStore, {
   defaultValueMap: observable,
   setDefaultValueMap: action,
   url: computed,
-  fetchWeather: action
+  fetchWeather: action,
+  forecast: observable
 });

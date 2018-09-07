@@ -83,6 +83,7 @@ class FieldLocation extends React.Component {
             returnKeyType={"search"}
             fetchDetails={true}
             onPress={(data, details = null) => {
+              console.log(data);
               setLatLon(details.geometry.location);
               setName(data.description);
             }}

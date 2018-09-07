@@ -5,7 +5,7 @@ import { StyleSheet, View, Text } from "react-native";
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: "pink"
+    // backgroundColor: "pink"
   }
 });
 
@@ -20,9 +20,9 @@ class ForecastWeather extends Component {
   render() {
     return (
       <View style={styles.root}>
-        <Text>Ciccio</Text>
-        <Text>Ciccio</Text>
-        <Text>Ciccio</Text>
+        <Text>Forecast</Text>
+        <Text>Forecast</Text>
+        <Text>Forecast</Text>
       </View>
     );
   }
