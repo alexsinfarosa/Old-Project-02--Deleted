@@ -7,6 +7,8 @@ import ForecastWeather from "../components/ForecastWeather";
 
 class ForecastScreen extends React.Component {
   render() {
+    const { forecast } = this.props.app.fieldsStore;
+
     return (
       <View style={styles.container}>
         <View style={styles.colFlexEnd}>
@@ -29,12 +31,12 @@ class ForecastScreen extends React.Component {
 
         <View
           style={{
-            flex: 8,
-            justifyContent: "center",
-            alignItems: "center"
+            flex: 8
+            // justifyContent: "center",
+            // alignItems: "center"
           }}
         >
-          <ForecastWeather />
+          {forecast && <ForecastWeather />}
         </View>
       </View>
     );

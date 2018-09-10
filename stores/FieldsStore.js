@@ -23,7 +23,8 @@ export default class FieldsStore {
 
   id;
   name;
-  latLon;
+  lat;
+  lon;
   irrigationDate;
   soilWaterCapacity = "Medium";
   crop = "Grass";
@@ -31,14 +32,18 @@ export default class FieldsStore {
   isLoading = false;
 
   setIrrigationDate = d => (this.irrigationDate = d);
-  setLatLon = d => (this.latLon = d);
+  setLatLon = d => {
+    this.lat = d.lat;
+    this.lon = d.lng;
+  };
   setName = d => (this.name = d);
 
   get asJson() {
     return {
       id: this.id,
       name: this.name,
-      latLon: this.latLon,
+      lat: this.lat,
+      lon: this.lon,
       irrigationDate: this.irrigationDate,
       soilWaterCapacity: this.soilWaterCapacity,
       crop: this.crop,
@@ -73,16 +78,12 @@ export default class FieldsStore {
   }
 
   get url() {
-    const lat = this.selectedField ? this.selectedField.latLon.lat : "44.9676";
-    const lon = this.selectedField ? this.selectedField.latLon.lon : "12.5757";
-    return `http://api.openweathermap.org/data/2.5/forecast?lat=${44.0678}&lon=${12.5695}&APPID=${API_KEY}`;
+    return this.selectedField
+      ? `https://api.darksky.net/forecast/${API_KEY}/${
+          this.selectedField.lat
+        },${this.selectedField.lon}?exclude='flags,minutely,alerts,hourly'`
+      : `https://api.darksky.net/forecast/${API_KEY}/42.4439614,-76.5018807?exclude=flags,minutely,alerts,hourly`;
   }
-
-  // get url() {
-  //   const lat = this.selectedField ? this.selectedField.latLon.lat : "44.9676";
-  //   const lon = this.selectedField ? this.selectedField.latLon.lon : "12.5757";
-  //   return `http://api.openweathermap.org/data/2.5/forecast?lat=${43.967605}&lon=${12.5757028}&APPID=${API_KEY}`;
-  // }
 
   forecast;
   // setForecast = d => (this.forecast = d);
@@ -93,8 +94,10 @@ export default class FieldsStore {
       .then(res => {
         console.log(res.data);
         this.forecast = {
-          list: res.data.list,
-          city: res.data.city
+          currently: res.data.currently,
+          daily: res.data.daily,
+          lat: res.data.latitude,
+          lon: res.data.longitude
         };
         this.isLoading = false;
       })
@@ -165,7 +168,8 @@ decorate(FieldsStore, {
   areFields: computed,
   id: observable,
   name: observable,
-  latLon: observable,
+  lat: observable,
+  lon: observable,
   irrigationDate: observable,
   soilWaterCapacity: observable,
   crop: observable,

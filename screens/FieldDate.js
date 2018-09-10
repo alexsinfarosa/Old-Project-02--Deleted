@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 class FieldDate extends React.Component {
   render() {
     const {
-      latLon,
+      lat,
       irrigationDate,
       setIrrigationDate,
       addField
@@ -108,7 +108,7 @@ class FieldDate extends React.Component {
 
         <View style={styles.bottom}>
           <Button
-            disabled={latLon ? false : true}
+            disabled={lat ? false : true}
             onPress={() => {
               addField();
               this.props.navigation.navigate("Home");

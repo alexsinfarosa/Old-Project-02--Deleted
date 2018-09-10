@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 class FieldLocation extends React.Component {
   render() {
     const {
-      latLon,
+      lat,
       setLatLon,
       setName,
       defaultValueMap
@@ -83,7 +83,6 @@ class FieldLocation extends React.Component {
             returnKeyType={"search"}
             fetchDetails={true}
             onPress={(data, details = null) => {
-              console.log(data);
               setLatLon(details.geometry.location);
               setName(data.description);
             }}
@@ -121,7 +120,7 @@ class FieldLocation extends React.Component {
 
         <View style={styles.bottom}>
           <Button
-            disabled={latLon ? false : true}
+            disabled={lat ? false : true}
             onPress={() => this.props.navigation.navigate("FieldDate")}
             title="Select Date"
             color="white"
