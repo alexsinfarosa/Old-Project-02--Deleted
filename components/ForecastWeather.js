@@ -3,6 +3,9 @@ import { inject, observer } from "mobx-react";
 
 import { StyleSheet, View, Text } from "react-native";
 
+import { format } from "date-fns/esm";
+import { Icon } from "native-base";
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -24,7 +27,8 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 6,
-    backgroundColor: "tomato"
+    // backgroundColor: "tomato",
+    alignItems: "stretch"
   }
 });
 
@@ -42,12 +46,53 @@ class ForecastWeather extends Component {
           <Text style={{ fontSize: 24 }}>
             {Math.round(forecast.currently.temperature, 1)}˚
           </Text>
+          <Text style={{ fontSize: 10 }}>{forecast.currently.summary}</Text>
         </View>
 
         <View style={styles.bottom}>
           <Text style={{ fontSize: 18 }}>Next 7 Days</Text>
+          <Text style={{ fontSize: 10, marginBottom: 32 }}>
+            {forecast.daily.summary}
+          </Text>
           {forecast.daily.data.map(day => {
-            return <Text key={day.time}>{day.summary}</Text>;
+            return (
+              <View
+                key={day.time}
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  alignItems: "center"
+                }}
+              >
+                <View style={{ alignItems: "center" }}>
+                  <Text>{format(new Date(day.time), "ddd")}</Text>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <Icon
+                      onPress={null}
+                      name="ios-water"
+                      style={{
+                        fontSize: 10,
+                        color: "#4A86E5",
+                        marginRight: 4
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontSize: 10,
+                        color: "#4A86E5",
+                        textAlign: "center"
+                      }}
+                    >
+                      {day.precipProbability * 100}%
+                    </Text>
+                  </View>
+                </View>
+                <Text>ICON</Text>
+                <Text>{Math.round(day.temperatureLow, 1)}˚</Text>
+                <Text>{Math.round(day.temperatureHigh, 1)}˚</Text>
+              </View>
+            );
           })}
         </View>
       </View>
