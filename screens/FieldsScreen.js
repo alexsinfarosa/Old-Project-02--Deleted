@@ -15,13 +15,13 @@ class FieldsScreen extends React.Component {
               <Icon
                 onPress={this.props.scrollBack}
                 name="ios-stats"
-                style={{ fontSize: 30, color: "#c5c6c8", padding: 8 }}
+                style={{ fontSize: 35, color: "#c5c6c8", padding: 8 }}
               />
             </View>
             <View style={{ flex: 2, alignItems: "center" }}>
               <Icon
                 name="ios-water"
-                style={{ fontSize: 37, color: "#355691", padding: 8 }}
+                style={{ fontSize: 40, color: "#355691", padding: 8 }}
               />
             </View>
             <View style={{ flex: 1, alignItems: "center" }}>
@@ -30,7 +30,7 @@ class FieldsScreen extends React.Component {
                   this.props.navigation.navigate("FieldLocation");
                 }}
                 name="ios-add"
-                style={{ fontSize: 30, color: "black", padding: 8 }}
+                style={{ fontSize: 35, color: "black", padding: 8 }}
               />
             </View>
           </View>

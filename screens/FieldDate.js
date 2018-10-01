@@ -50,6 +50,7 @@ class FieldDate extends React.Component {
         <View style={styles.top}>
           <Icon
             name="ios-arrow-back"
+            style={{ fontSize: 35, padding: 8 }}
             onPress={() => this.props.navigation.navigate("FieldLocation")}
           />
           <View

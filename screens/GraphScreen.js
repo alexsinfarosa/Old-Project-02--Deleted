@@ -16,13 +16,13 @@ class GraphScreen extends React.Component {
               <Icon
                 onPress={this.props.scrollBack}
                 name="ios-cloud"
-                style={{ fontSize: 30, color: "#c5c6c8", padding: 8 }}
+                style={{ fontSize: 35, color: "#c5c6c8", padding: 8 }}
               />
             </View>
             <View style={{ flex: 2, alignItems: "center" }}>
               <Icon
                 name="md-stats"
-                style={{ fontSize: 37, color: "#355691", padding: 8 }}
+                style={{ fontSize: 40, color: "#355691", padding: 8 }}
               />
             </View>
             <View style={{ flex: 1, alignItems: "center" }}>
@@ -30,7 +30,7 @@ class GraphScreen extends React.Component {
                 onPress={this.props.scrollForward}
                 name="ios-water"
                 style={{
-                  fontSize: 30,
+                  fontSize: 35,
                   color: "#c5c6c8",
                   padding: 8
                 }}

@@ -51,6 +51,7 @@ class FieldLocation extends React.Component {
       <View style={styles.root}>
         <View style={styles.top}>
           <Icon
+            style={{ padding: 8, fontSize: 35 }}
             name="ios-arrow-back"
             onPress={() => this.props.navigation.navigate("Home")}
           />

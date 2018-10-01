@@ -19,14 +19,14 @@ class ForecastScreen extends React.Component {
             <View style={{ flex: 2, alignItems: "center" }}>
               <Icon
                 name="ios-cloud"
-                style={{ fontSize: 37, color: "#355691", padding: 8 }}
+                style={{ fontSize: 40, color: "#355691", padding: 8 }}
               />
             </View>
             <View style={{ flex: 1, alignItems: "center" }}>
               <Icon
                 onPress={this.props.scrollForward}
                 name="ios-stats"
-                style={{ fontSize: 30, color: "#c5c6c8", padding: 8 }}
+                style={{ fontSize: 35, color: "#c5c6c8", padding: 8 }}
               />
             </View>
           </View>

@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
   bottom: {
     flex: 6,
     // backgroundColor: "tomato",
-    alignItems: "stretch"
+    alignItems: "stretch",
+    marginBottom: 32
   }
 });
 
@@ -39,19 +40,21 @@ class ForecastWeather extends Component {
     return (
       <View style={styles.root}>
         <View style={styles.top}>
-          <Text>{selectedField ? selectedField.name : ""}</Text>
+          <Text style={{ fontSize: 20 }}>
+            {selectedField ? selectedField.name : ""}
+          </Text>
         </View>
 
         <View style={styles.middle}>
-          <Text style={{ fontSize: 24 }}>
+          <Text style={{ fontSize: 27 }}>
             {Math.round(forecast.currently.temperature, 1)}˚
           </Text>
-          <Text style={{ fontSize: 10 }}>{forecast.currently.summary}</Text>
+          <Text style={{ fontSize: 14 }}>{forecast.currently.summary}</Text>
         </View>
 
         <View style={styles.bottom}>
           <Text style={{ fontSize: 18 }}>Next 7 Days</Text>
-          <Text style={{ fontSize: 10, marginBottom: 32 }}>
+          <Text style={{ fontSize: 12, marginBottom: 32 }}>
             {forecast.daily.summary}
           </Text>
           {forecast.daily.data.map(day => {
