@@ -10,7 +10,7 @@ export default class FieldsStore {
     when(
       () => this.fields.length > 0,
       () => {
-        console.log("fields is empty");
+        console.log("fields is empty. Invoke readFromLocalStorage");
         this.readFromLocalstorage();
         // this.fetchWeather();
       }

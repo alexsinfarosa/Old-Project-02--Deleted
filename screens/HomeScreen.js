@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
-import { StyleSheet, View, Text } from "react-native";
-import { Button } from "native-base";
+import { StyleSheet, View } from "react-native";
+import { Button, Text, H1 } from "native-base";
 import Swiper from "react-native-swiper";
 
 // components
@@ -36,6 +36,9 @@ class HomeScreen extends React.Component {
               alignItems: "center"
             }}
           >
+            <View style={{ marginBottom: 16 }}>
+              <H1>Irrigation Tool</H1>
+            </View>
             <View>
               <Button
                 bordered
@@ -48,9 +51,7 @@ class HomeScreen extends React.Component {
               >
                 <Text
                   style={{
-                    color: "#355691",
-                    marginLeft: 16,
-                    marginRight: 16
+                    color: "#355691"
                   }}
                 >
                   Add Field
