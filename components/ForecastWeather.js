@@ -51,9 +51,19 @@ class ForecastWeather extends Component {
         </View>
 
         <View style={styles.middle}>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}>
-            {Math.round(forecast.currently.temperature, 1)}˚
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              style={{
+                width: 40,
+                height: 40,
+                marginRight: 8
+              }}
+              source={weatherIcons[forecast.daily.data[0].icon]}
+            />
+            <Text style={{ fontSize: 30, fontWeight: "bold" }}>
+              {Math.round(forecast.currently.temperature, 1)}˚
+            </Text>
+          </View>
           <Text style={{ fontSize: 14 }}>{forecast.currently.summary}</Text>
         </View>
 
@@ -63,7 +73,7 @@ class ForecastWeather extends Component {
             {forecast.daily.summary}
           </Text>
           {forecast.daily.data.map(day => {
-            console.log(day.summary, day.icon);
+            // console.log(day.summary, day.icon);
             return (
               <View
                 key={day.time}
