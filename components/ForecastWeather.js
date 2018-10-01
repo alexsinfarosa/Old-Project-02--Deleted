@@ -110,7 +110,7 @@ class ForecastWeather extends Component {
                         textAlign: "center"
                       }}
                     >
-                      {Math.round(day.precipProbability) * 100}%
+                      {Math.round(day.precipProbability * 100)}%
                     </Text>
                   </View>
                 </View>
