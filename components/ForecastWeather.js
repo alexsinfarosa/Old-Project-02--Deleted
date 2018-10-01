@@ -55,7 +55,6 @@ class ForecastWeather extends Component {
             {forecast.daily.summary}
           </Text>
           {forecast.daily.data.map(day => {
-            console.log(day.time);
             return (
               <View
                 key={day.time}

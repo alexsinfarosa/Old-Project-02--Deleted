@@ -2,8 +2,8 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-import { View, Text, StyleSheet, Button } from "react-native";
-import { Icon } from "native-base";
+import { View, Text, StyleSheet } from "react-native";
+import { Icon, Button } from "native-base";
 
 const styles = StyleSheet.create({
   root: {
@@ -64,13 +64,11 @@ class FieldLocation extends React.Component {
             <Text style={styles.h1}>Where is your field?</Text>
           </View>
 
-          <Button
+          <View
             style={{
               flex: 1,
               alignItems: "flex-start"
             }}
-            onPress={() => console.log("")}
-            title=""
           />
         </View>
 
@@ -120,11 +118,17 @@ class FieldLocation extends React.Component {
 
         <View style={styles.bottom}>
           <Button
+            full
+            transparent
             disabled={lat ? false : true}
             onPress={() => this.props.navigation.navigate("FieldDate")}
-            title="Select Date"
-            color="white"
-          />
+          >
+            <Text
+              style={{ opacity: lat ? 1 : 0.7, color: "white", fontSize: 25 }}
+            >
+              Select Date
+            </Text>
+          </Button>
         </View>
       </View>
     );

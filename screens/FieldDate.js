@@ -2,8 +2,8 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import DatePicker from "react-native-datepicker";
 
-import { View, Text, StyleSheet, Button } from "react-native";
-import { Icon } from "native-base";
+import { View, Text, StyleSheet } from "react-native";
+import { Icon, Button } from "native-base";
 
 const styles = StyleSheet.create({
   root: {
@@ -62,13 +62,11 @@ class FieldDate extends React.Component {
             <Text style={styles.h1}>Date of last irrigation</Text>
           </View>
 
-          <Button
+          <View
             style={{
               flex: 1,
               alignItems: "flex-start"
             }}
-            onPress={() => console.log("")}
-            title=""
           />
         </View>
 
@@ -108,14 +106,20 @@ class FieldDate extends React.Component {
 
         <View style={styles.bottom}>
           <Button
+            full
+            transparent
             disabled={lat ? false : true}
             onPress={() => {
               addField();
               this.props.navigation.navigate("Home");
             }}
-            title="Create Field"
-            color="white"
-          />
+          >
+            <Text
+              style={{ opacity: lat ? 1 : 0.7, color: "white", fontSize: 25 }}
+            >
+              Create Field
+            </Text>
+          </Button>
         </View>
       </View>
     );
