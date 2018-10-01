@@ -5,12 +5,9 @@ import axios from "axios";
 
 export default class FieldsStore {
   constructor() {
-    console.log(this.fields.length);
-    console.log(this.selectedField);
     when(
-      () => this.fields.length > 0,
+      () => !this.fields.length > 0,
       () => {
-        console.log("fields is empty. Invoke readFromLocalStorage");
         this.readFromLocalstorage();
         // this.fetchWeather();
       }
@@ -117,7 +114,6 @@ export default class FieldsStore {
 
   //   localstorage
   writeToLocalstorage = async () => {
-    console.log("writing to localStorage");
     const fields = this.fields.slice();
     try {
       await AsyncStorage.setItem(`irriTool-model`, JSON.stringify(fields));
@@ -127,7 +123,6 @@ export default class FieldsStore {
   };
 
   readFromLocalstorage = async () => {
-    console.log("reading from localStorage");
     try {
       const retreivedField = await AsyncStorage.getItem("irriTool-model");
       const fields = JSON.parse(retreivedField);

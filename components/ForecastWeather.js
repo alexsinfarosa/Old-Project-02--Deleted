@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 
 import { StyleSheet, View, Text } from "react-native";
 
-import { format } from "date-fns/esm";
+import format from "date-fns/format";
 import { Icon } from "native-base";
 
 const styles = StyleSheet.create({
@@ -55,6 +55,7 @@ class ForecastWeather extends Component {
             {forecast.daily.summary}
           </Text>
           {forecast.daily.data.map(day => {
+            console.log(day.time);
             return (
               <View
                 key={day.time}
@@ -66,7 +67,7 @@ class ForecastWeather extends Component {
                 }}
               >
                 <View style={{ alignItems: "center" }}>
-                  <Text>{format(new Date(day.time), "ddd")}</Text>
+                  <Text>{format(new Date(day.time) * 1000, "ddd")}</Text>
                   <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon
                       onPress={null}
