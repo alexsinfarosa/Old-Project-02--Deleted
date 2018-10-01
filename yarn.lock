@@ -5655,6 +5655,10 @@ react-google-maps@^7.3.0:
     scriptjs "2.5.8"
     warning "3.0.0"
 
+react-icons-weather@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-icons-weather/-/react-icons-weather-1.0.5.tgz#c327f22c66f59565061bb82118d4c3b32482f7b9"
+
 react-is@^16.3.1, react-is@^16.4.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.1.tgz#d624c4650d2c65dbd52c72622bbf389435d9776e"

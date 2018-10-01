@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 
 import format from "date-fns/format";
 import { Icon } from "native-base";
+import { weatherIcons } from "../utils/weatherIcons";
 
 const styles = StyleSheet.create({
   root: {
@@ -30,6 +31,10 @@ const styles = StyleSheet.create({
     // backgroundColor: "tomato",
     alignItems: "stretch",
     marginBottom: 32
+  },
+  icon: {
+    width: 20,
+    height: 20
   }
 });
 
@@ -58,6 +63,7 @@ class ForecastWeather extends Component {
             {forecast.daily.summary}
           </Text>
           {forecast.daily.data.map(day => {
+            console.log(day.icon);
             return (
               <View
                 key={day.time}
@@ -68,7 +74,7 @@ class ForecastWeather extends Component {
                   alignItems: "center"
                 }}
               >
-                <View style={{ alignItems: "center" }}>
+                <View style={{ alignItems: "center", width: 40 }}>
                   <Text>{format(new Date(day.time) * 1000, "ddd")}</Text>
                   <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon
@@ -91,7 +97,7 @@ class ForecastWeather extends Component {
                     </Text>
                   </View>
                 </View>
-                <Text>ICON</Text>
+                <Image style={styles.icon} source={weatherIcons[day.icon]} />
                 <Text>{Math.round(day.temperatureLow, 1)}˚</Text>
                 <Text>{Math.round(day.temperatureHigh, 1)}˚</Text>
               </View>
