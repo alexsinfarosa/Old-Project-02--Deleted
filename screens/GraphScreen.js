@@ -38,26 +38,12 @@ class GraphScreen extends React.Component {
             alignItems: "center"
           }}
         >
-          {field ? (
-            <View style={styles.field}>
-              <Text style={{ fontSize: 20 }}>{field.name}</Text>
-              <Text style={{ color: "teal", fontSize: 16 }}>
-                {field.irrigationDate}
-              </Text>
-            </View>
-          ) : (
-            <View>
-              <Button
-                bordered
-                style={{ borderColor: "#355691" }}
-                onPress={() => {
-                  this.props.navigation.navigate("FieldLocation");
-                }}
-              >
-                <Text style={{ color: "#355691" }}>Add Field</Text>
-              </Button>
-            </View>
-          )}
+          <View style={styles.field}>
+            <Text style={{ fontSize: 20 }}>{field.name}</Text>
+            <Text style={{ color: "teal", fontSize: 16 }}>
+              {field.irrigationDate}
+            </Text>
+          </View>
         </View>
       </View>
     );

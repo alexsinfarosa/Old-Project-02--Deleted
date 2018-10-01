@@ -5,16 +5,19 @@ import axios from "axios";
 
 export default class FieldsStore {
   constructor() {
+    console.log(this.fields.length);
+    console.log(this.selectedField);
     when(
-      () => !this.isLoading,
+      () => this.fields.length > 0,
       () => {
+        console.log("fields is empty");
         this.readFromLocalstorage();
-        this.fetchWeather();
+        // this.fetchWeather();
       }
     );
 
     reaction(() => this.selectedField, () => this.fetchWeather());
-    reaction(() => this.selectedField, () => console.log(this.selectedField));
+    // reaction(() => this.selectedField, () => console.log(this.selectedField));
   }
 
   get areFields() {
@@ -92,7 +95,7 @@ export default class FieldsStore {
     return axios
       .get(this.url)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.forecast = {
           currently: res.data.currently,
           daily: res.data.daily,
@@ -114,6 +117,7 @@ export default class FieldsStore {
 
   //   localstorage
   writeToLocalstorage = async () => {
+    console.log("writing to localStorage");
     const fields = this.fields.slice();
     try {
       await AsyncStorage.setItem(`irriTool-model`, JSON.stringify(fields));
@@ -123,11 +127,12 @@ export default class FieldsStore {
   };
 
   readFromLocalstorage = async () => {
+    console.log("reading from localStorage");
     try {
       const retreivedField = await AsyncStorage.getItem("irriTool-model");
       const fields = JSON.parse(retreivedField);
-      // console.log(fields);
-      if (fields && fields.length > 0) {
+      // console.log(fields); // if nothing in localStorage, fields is null
+      if (fields) {
         fields[fields.length - 1].isSelected = true;
         this.fields = fields;
       }

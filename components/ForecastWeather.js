@@ -39,7 +39,7 @@ class ForecastWeather extends Component {
     return (
       <View style={styles.root}>
         <View style={styles.top}>
-          <Text>{selectedField.name}</Text>
+          <Text>{selectedField ? selectedField.name : ""}</Text>
         </View>
 
         <View style={styles.middle}>
@@ -84,7 +84,7 @@ class ForecastWeather extends Component {
                         textAlign: "center"
                       }}
                     >
-                      {day.precipProbability * 100}%
+                      {Math.round(day.precipProbability) * 100}%
                     </Text>
                   </View>
                 </View>
