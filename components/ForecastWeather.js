@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     marginBottom: 32
   },
   icon: {
-    width: 20,
-    height: 20
+    width: 25,
+    height: 25
   }
 });
 
@@ -51,44 +51,51 @@ class ForecastWeather extends Component {
         </View>
 
         <View style={styles.middle}>
-          <Text style={{ fontSize: 27 }}>
+          <Text style={{ fontSize: 30, fontWeight: "bold" }}>
             {Math.round(forecast.currently.temperature, 1)}˚
           </Text>
           <Text style={{ fontSize: 14 }}>{forecast.currently.summary}</Text>
         </View>
 
         <View style={styles.bottom}>
-          <Text style={{ fontSize: 18 }}>Next 7 Days</Text>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>Next 7 Days</Text>
           <Text style={{ fontSize: 12, marginBottom: 32 }}>
             {forecast.daily.summary}
           </Text>
           {forecast.daily.data.map(day => {
-            console.log(day.icon);
+            console.log(day.summary, day.icon);
             return (
               <View
                 key={day.time}
                 style={{
                   flex: 1,
                   flexDirection: "row",
-                  justifyContent: "space-evenly",
+                  justifyContent: "space-around",
                   alignItems: "center"
                 }}
               >
                 <View style={{ alignItems: "center", width: 40 }}>
-                  <Text>{format(new Date(day.time) * 1000, "ddd")}</Text>
+                  <Text
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: 16
+                    }}
+                  >
+                    {format(new Date(day.time) * 1000, "ddd").toUpperCase()}
+                  </Text>
                   <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon
                       onPress={null}
                       name="ios-water"
                       style={{
-                        fontSize: 10,
+                        fontSize: 12,
                         color: "#4A86E5",
                         marginRight: 4
                       }}
                     />
                     <Text
                       style={{
-                        fontSize: 10,
+                        fontSize: 12,
                         color: "#4A86E5",
                         textAlign: "center"
                       }}
@@ -98,8 +105,12 @@ class ForecastWeather extends Component {
                   </View>
                 </View>
                 <Image style={styles.icon} source={weatherIcons[day.icon]} />
-                <Text>{Math.round(day.temperatureLow, 1)}˚</Text>
-                <Text>{Math.round(day.temperatureHigh, 1)}˚</Text>
+                <Text style={{ fontSize: 16 }}>
+                  {Math.round(day.temperatureLow, 1)}˚
+                </Text>
+                <Text style={{ fontSize: 16 }}>
+                  {Math.round(day.temperatureHigh, 1)}˚
+                </Text>
               </View>
             );
           })}
