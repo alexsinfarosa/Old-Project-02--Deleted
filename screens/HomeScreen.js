@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { StyleSheet, View } from "react-native";
-import { Button, Text, H1 } from "native-base";
+import { Button, Text, H1, H2 } from "native-base";
 import Swiper from "react-native-swiper";
 
 // components
@@ -36,8 +36,49 @@ class HomeScreen extends React.Component {
               alignItems: "center"
             }}
           >
-            <View style={{ marginBottom: 16 }}>
-              <H1>Irrigation Tool</H1>
+            <View
+              style={{
+                marginBottom: 96,
+                width: 350,
+                height: 100,
+                // backgroundColor: "pink",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <H1
+                style={{
+                  textAlign: "center",
+                  color: "#222222",
+                  marginBottom: 8,
+                  padding: 8,
+                  fontSize: 35
+                }}
+              >
+                Welcome to
+              </H1>
+              <H1
+                style={{
+                  textAlign: "center",
+                  color: "#222222",
+                  marginBottom: 8,
+                  padding: 8,
+                  fontSize: 35
+                }}
+              >
+                CSF Water Deficit
+              </H1>
+              <H1
+                style={{
+                  textAlign: "center",
+                  color: "#222222",
+                  marginBottom: 8,
+                  padding: 8,
+                  fontSize: 35
+                }}
+              >
+                Calculator!
+              </H1>
             </View>
             <View>
               <Button
