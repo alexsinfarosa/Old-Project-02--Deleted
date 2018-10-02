@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "#1faadb"
+    backgroundColor: "#355691"
   },
   h1: {
     fontSize: 20
@@ -107,7 +107,7 @@ class FieldLocation extends React.Component {
                 borderBottomWidth: 1
               },
               predefinedPlacesDescription: {
-                color: "#1faadb"
+                color: "#355691"
               }
             }}
             debounce={200}

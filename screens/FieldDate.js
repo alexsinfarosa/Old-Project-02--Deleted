@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "#1faadb"
+    backgroundColor: "#355691"
   },
   h1: {
     fontSize: 20
@@ -109,14 +109,18 @@ class FieldDate extends React.Component {
           <Button
             full
             transparent
-            disabled={lat ? false : true}
+            disabled={irrigationDate ? false : true}
             onPress={() => {
               addField();
               this.props.navigation.navigate("Home");
             }}
           >
             <Text
-              style={{ opacity: lat ? 1 : 0.7, color: "white", fontSize: 25 }}
+              style={{
+                opacity: irrigationDate ? 1 : 0.7,
+                color: "white",
+                fontSize: 25
+              }}
             >
               Create Field
             </Text>

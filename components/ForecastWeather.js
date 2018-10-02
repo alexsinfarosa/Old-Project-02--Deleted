@@ -99,14 +99,14 @@ class ForecastWeather extends Component {
                       name="ios-water"
                       style={{
                         fontSize: 12,
-                        color: "#4A86E5",
+                        color: "#355691",
                         marginRight: 4
                       }}
                     />
                     <Text
                       style={{
                         fontSize: 12,
-                        color: "#4A86E5",
+                        color: "#355691",
                         textAlign: "center"
                       }}
                     >

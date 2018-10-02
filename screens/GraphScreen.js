@@ -47,7 +47,7 @@ class GraphScreen extends React.Component {
         >
           <View style={styles.field}>
             <Text style={{ fontSize: 20 }}>{field.name}</Text>
-            <Text style={{ color: "teal", fontSize: 16 }}>
+            <Text style={{ color: "#355691", fontSize: 16 }}>
               {field.irrigationDate}
             </Text>
           </View>
