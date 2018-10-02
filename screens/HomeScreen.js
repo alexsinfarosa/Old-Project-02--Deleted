@@ -8,7 +8,6 @@ import Swiper from "react-native-swiper";
 import ForecastScreen from "./ForecastScreen";
 import FieldsScreen from "./FieldsScreen";
 import GraphScreen from "./GraphScreen";
-import NewFieldScreen from "./NewFieldScreen";
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -24,8 +23,6 @@ class HomeScreen extends React.Component {
   scrollBack = () => this.myRef.current.scrollBy(-1);
 
   render() {
-    // const { isNewField } = this.props.app.fieldsStore;
-
     return (
       <View style={styles.container}>
         {this.props.app.fieldsStore.fields.length === 0 ? (
@@ -105,7 +102,7 @@ class HomeScreen extends React.Component {
             showsButtons={false}
             showsPagination={false}
             loop={false}
-            index={1}
+            index={this.state.idx}
             ref={this.myRef}
             onIndexChanged={idx => this.setState({ idx })}
             // activeDotColor="#f4511e"
@@ -125,6 +122,7 @@ class HomeScreen extends React.Component {
               idx={this.state.idx}
               scrollBack={this.scrollBack}
               navigation={this.props.navigation}
+              setIdx={() => console.log(this.state.idx)}
             />
           </Swiper>
         )}

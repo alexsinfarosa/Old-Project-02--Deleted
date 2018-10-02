@@ -6,7 +6,6 @@ import { Icon, Button, Text } from "native-base";
 class GraphScreen extends React.Component {
   render() {
     const { field } = this.props;
-    const { setIsNewField } = this.props.app.fieldsStore;
 
     return (
       <View style={styles.container}>

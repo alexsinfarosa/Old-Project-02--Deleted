@@ -27,6 +27,7 @@ class FieldsScreen extends React.Component {
             <View style={{ flex: 1, alignItems: "center" }}>
               <Icon
                 onPress={() => {
+                  this.props.setIdx();
                   this.props.navigation.navigate("FieldLocation");
                 }}
                 name="ios-add"
