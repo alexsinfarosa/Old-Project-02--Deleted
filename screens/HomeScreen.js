@@ -24,14 +24,14 @@ class HomeScreen extends React.Component {
       homePageIdx,
       setHomePageIdx,
       selectedField,
-      isLoading
+      isLoading,
+      fields
     } = this.props.app.fieldsStore;
-    console.log(selectedField);
 
     return (
       <View style={styles.container}>
         {!isLoading &&
-          selectedField && (
+          fields.length > 0 && (
             <Swiper
               showsButtons={false}
               showsPagination={false}
@@ -46,7 +46,7 @@ class HomeScreen extends React.Component {
                 scrollForward={this.scrollForward}
               />
               <GraphScreen
-                field={this.props.app.fieldsStore.selectedField}
+                field={selectedField}
                 idx={homePageIdx}
                 scrollBack={this.scrollBack}
                 scrollForward={this.scrollForward}
@@ -61,7 +61,7 @@ class HomeScreen extends React.Component {
             </Swiper>
           )}
         {!isLoading &&
-          !selectedField && (
+          fields.length === 0 && (
             <View
               style={{
                 flex: 8,

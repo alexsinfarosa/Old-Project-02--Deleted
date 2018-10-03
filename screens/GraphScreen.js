@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { StyleSheet, View } from "react-native";
-import { Icon, Button, Text } from "native-base";
+import { Icon, Text } from "native-base";
 
 class GraphScreen extends React.Component {
   render() {

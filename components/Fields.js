@@ -52,8 +52,8 @@ class Fields extends Component {
         >
           <TouchableOpacity
             onPress={() => {
-              this.props.scrollBack();
               selectField(field.id);
+              this.props.scrollBack();
             }}
           >
             <View style={styles.field}>

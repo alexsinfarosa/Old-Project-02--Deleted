@@ -91,6 +91,7 @@ export default class FieldsStore {
   forecast;
   // setForecast = d => (this.forecast = d);
   fetchWeather() {
+    // console.log("fetchWeatherData");
     this.isLoading = true;
     return axios
       .get(this.url)
@@ -131,13 +132,14 @@ export default class FieldsStore {
       const retreivedField = await AsyncStorage.getItem("irriTool-model");
       const fields = JSON.parse(retreivedField);
       // console.log(fields); // if nothing in localStorage, fields is null
-      if (fields) {
+      if (fields && fields.length !== 0) {
         fields[fields.length - 1].isSelected = true;
         this.fields = fields;
         this.isLoading = false;
       }
+      this.isLoading = false;
     } catch (error) {
-      console.log(error);
+      console.log(`Cannot read from localStorage, ${error}`);
     }
   };
 
