@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 class FieldDate extends React.Component {
   render() {
     const {
-      lat,
+      setHomePageIdx,
       irrigationDate,
       setIrrigationDate,
       addField

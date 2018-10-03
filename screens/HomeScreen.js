@@ -15,117 +15,125 @@ class HomeScreen extends React.Component {
     this.myRef = React.createRef();
   }
 
-  state = {
-    idx: 1
-  };
-
   scrollForward = () => this.myRef.current.scrollBy(1);
   scrollBack = () => this.myRef.current.scrollBy(-1);
+  scrollBy = d => this.myRef.current.scrollBy(d);
 
   render() {
+    const {
+      homePageIdx,
+      setHomePageIdx,
+      selectedField,
+      isLoading
+    } = this.props.app.fieldsStore;
+    console.log(selectedField);
+
     return (
       <View style={styles.container}>
-        {this.props.app.fieldsStore.fields.length === 0 ? (
-          <View
-            style={{
-              flex: 8,
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
+        {!isLoading &&
+          selectedField && (
+            <Swiper
+              showsButtons={false}
+              showsPagination={false}
+              loop={false}
+              index={homePageIdx}
+              ref={this.myRef}
+              onIndexChanged={idx => setHomePageIdx(idx)}
+              // activeDotColor="#f4511e"
+            >
+              <ForecastScreen
+                idx={homePageIdx}
+                scrollForward={this.scrollForward}
+              />
+              <GraphScreen
+                field={this.props.app.fieldsStore.selectedField}
+                idx={homePageIdx}
+                scrollBack={this.scrollBack}
+                scrollForward={this.scrollForward}
+                navigation={this.props.navigation}
+                scrollBy={this.scrollBy}
+              />
+              <FieldsScreen
+                idx={homePageIdx}
+                scrollBack={this.scrollBack}
+                navigation={this.props.navigation}
+              />
+            </Swiper>
+          )}
+        {!isLoading &&
+          !selectedField && (
             <View
               style={{
-                marginBottom: 96,
-                width: 350,
-                height: 100,
-                // backgroundColor: "pink",
+                flex: 8,
                 justifyContent: "center",
                 alignItems: "center"
               }}
             >
-              <H1
+              <View
                 style={{
-                  textAlign: "center",
-                  color: "#222222",
-                  marginBottom: 8,
-                  padding: 8,
-                  fontSize: 35
+                  marginBottom: 96,
+                  width: 350,
+                  height: 100,
+                  // backgroundColor: "pink",
+                  justifyContent: "center",
+                  alignItems: "center"
                 }}
               >
-                Welcome to
-              </H1>
-              <H1
-                style={{
-                  textAlign: "center",
-                  color: "#222222",
-                  marginBottom: 8,
-                  padding: 8,
-                  fontSize: 35
-                }}
-              >
-                CSF Water Deficit
-              </H1>
-              <H1
-                style={{
-                  textAlign: "center",
-                  color: "#222222",
-                  marginBottom: 8,
-                  padding: 8,
-                  fontSize: 35
-                }}
-              >
-                Calculator!
-              </H1>
-            </View>
-            <View>
-              <Button
-                bordered
-                style={{
-                  borderColor: "#355691"
-                }}
-                onPress={() => {
-                  this.props.navigation.navigate("FieldLocation");
-                }}
-              >
-                <Text
+                <H1
                   style={{
-                    color: "#355691"
+                    textAlign: "center",
+                    color: "#222222",
+                    marginBottom: 8,
+                    padding: 8,
+                    fontSize: 35
                   }}
                 >
-                  Add Field
-                </Text>
-              </Button>
+                  Welcome to
+                </H1>
+                <H1
+                  style={{
+                    textAlign: "center",
+                    color: "#222222",
+                    marginBottom: 8,
+                    padding: 8,
+                    fontSize: 35
+                  }}
+                >
+                  CSF Water Deficit
+                </H1>
+                <H1
+                  style={{
+                    textAlign: "center",
+                    color: "#222222",
+                    marginBottom: 8,
+                    padding: 8,
+                    fontSize: 35
+                  }}
+                >
+                  Calculator!
+                </H1>
+              </View>
+              <View>
+                <Button
+                  bordered
+                  style={{
+                    borderColor: "#355691"
+                  }}
+                  onPress={() => {
+                    this.props.navigation.navigate("FieldLocation");
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "#355691"
+                    }}
+                  >
+                    Add Field
+                  </Text>
+                </Button>
+              </View>
             </View>
-          </View>
-        ) : (
-          <Swiper
-            showsButtons={false}
-            showsPagination={false}
-            loop={false}
-            index={this.state.idx}
-            ref={this.myRef}
-            onIndexChanged={idx => this.setState({ idx })}
-            // activeDotColor="#f4511e"
-          >
-            <ForecastScreen
-              idx={this.state.idx}
-              scrollForward={this.scrollForward}
-            />
-            <GraphScreen
-              field={this.props.app.fieldsStore.selectedField}
-              idx={this.state.idx}
-              scrollBack={this.scrollBack}
-              scrollForward={this.scrollForward}
-              navigation={this.props.navigation}
-            />
-            <FieldsScreen
-              idx={this.state.idx}
-              scrollBack={this.scrollBack}
-              navigation={this.props.navigation}
-              setIdx={() => console.log(this.state.idx)}
-            />
-          </Swiper>
-        )}
+          )}
       </View>
     );
   }

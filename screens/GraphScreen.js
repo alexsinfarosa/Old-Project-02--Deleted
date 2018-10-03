@@ -5,7 +5,9 @@ import { Icon, Button, Text } from "native-base";
 
 class GraphScreen extends React.Component {
   render() {
-    const { field } = this.props;
+    const { field, scrollBack, scrollBy, scrollForward } = this.props;
+    const { homePageIdx } = this.props.app.fieldsStore;
+    console.log(homePageIdx);
 
     return (
       <View style={styles.container}>
@@ -13,7 +15,7 @@ class GraphScreen extends React.Component {
           <View style={styles.colToRow}>
             <View style={{ flex: 1, alignItems: "center" }}>
               <Icon
-                onPress={this.props.scrollBack}
+                onPress={scrollBack}
                 name="ios-cloud"
                 style={{ fontSize: 35, color: "#c5c6c8", padding: 8 }}
               />
@@ -26,7 +28,7 @@ class GraphScreen extends React.Component {
             </View>
             <View style={{ flex: 1, alignItems: "center" }}>
               <Icon
-                onPress={this.props.scrollForward}
+                onPress={scrollForward}
                 name="ios-water"
                 style={{
                   fontSize: 35,

@@ -17,6 +17,9 @@ export default class FieldsStore {
     // reaction(() => this.selectedField, () => console.log(this.selectedField));
   }
 
+  homePageIdx = 1;
+  setHomePageIdx = d => (this.homePageIdx = d);
+
   get areFields() {
     return this.fields.length > 0;
   }
@@ -124,12 +127,14 @@ export default class FieldsStore {
 
   readFromLocalstorage = async () => {
     try {
+      this.isLoading = true;
       const retreivedField = await AsyncStorage.getItem("irriTool-model");
       const fields = JSON.parse(retreivedField);
       // console.log(fields); // if nothing in localStorage, fields is null
       if (fields) {
         fields[fields.length - 1].isSelected = true;
         this.fields = fields;
+        this.isLoading = false;
       }
     } catch (error) {
       console.log(error);
@@ -188,5 +193,7 @@ decorate(FieldsStore, {
   setDefaultValueMap: action,
   url: computed,
   fetchWeather: action,
-  forecast: observable
+  forecast: observable,
+  homePageIdx: observable,
+  setHomePageIdx: action
 });

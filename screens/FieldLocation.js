@@ -82,8 +82,11 @@ class FieldLocation extends React.Component {
             returnKeyType={"search"}
             fetchDetails={true}
             onPress={(data, details = null) => {
+              const isFullAddress = data.formatted_address;
               setLatLon(details.geometry.location);
-              setName(data.description);
+              isFullAddress
+                ? setName(isFullAddress)
+                : setName(data.description);
             }}
             getDefaultValue={() => defaultValueMap}
             query={{
