@@ -68,6 +68,7 @@ export default class FieldsStore {
   };
 
   selectField = id => {
+    // console.log("selectField");
     this.fields.map(field => {
       field.id === id ? (field.isSelected = true) : (field.isSelected = false);
     });
@@ -89,7 +90,7 @@ export default class FieldsStore {
   }
 
   forecast;
-  // setForecast = d => (this.forecast = d);
+  setForecast = d => (this.forecast = d);
   fetchWeather() {
     // console.log("fetchWeatherData");
     this.isLoading = true;
@@ -97,12 +98,13 @@ export default class FieldsStore {
       .get(this.url)
       .then(res => {
         // console.log(res.data);
-        this.forecast = {
+        const forecast = {
           currently: res.data.currently,
           daily: res.data.daily,
           lat: res.data.latitude,
           lon: res.data.longitude
         };
+        this.setForecast(forecast);
         this.isLoading = false;
       })
       .catch(err => {
@@ -196,6 +198,7 @@ decorate(FieldsStore, {
   url: computed,
   fetchWeather: action,
   forecast: observable,
+  setForecast: action,
   homePageIdx: observable,
   setHomePageIdx: action
 });

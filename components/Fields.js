@@ -23,7 +23,12 @@ class Fields extends Component {
   };
 
   render() {
-    const { fields, removeField, selectField } = this.props.app.fieldsStore;
+    const {
+      fields,
+      removeField,
+      selectField,
+      selectedField
+    } = this.props.app.fieldsStore;
 
     // Buttons
     const swipeoutBtns = [

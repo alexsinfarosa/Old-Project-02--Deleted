@@ -57,6 +57,7 @@ class HomeScreen extends React.Component {
                 idx={homePageIdx}
                 scrollBack={this.scrollBack}
                 navigation={this.props.navigation}
+                scrollBy={this.scrollBy}
               />
             </Swiper>
           )}

@@ -5,7 +5,7 @@ import { Icon, Text } from "native-base";
 
 class GraphScreen extends React.Component {
   render() {
-    const { field, scrollBack, scrollBy, scrollForward } = this.props;
+    const { field, scrollBack, scrollForward } = this.props;
     const { homePageIdx } = this.props.app.fieldsStore;
     console.log(homePageIdx);
 

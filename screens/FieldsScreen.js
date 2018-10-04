@@ -39,7 +39,10 @@ class FieldsScreen extends React.Component {
             justifyContent: "center"
           }}
         >
-          <Fields scrollBack={this.props.scrollBack} />
+          <Fields
+            scrollBack={this.props.scrollBack}
+            scrollBy={this.props.scrollBy}
+          />
         </View>
       </View>
     );
