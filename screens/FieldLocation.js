@@ -4,6 +4,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 
 import { View, Text, StyleSheet } from "react-native";
 import { Icon, Button } from "native-base";
+import { GOOGLEPLACES_API_KEY } from "../utils/API";
 
 const styles = StyleSheet.create({
   root: {
@@ -91,7 +92,7 @@ class FieldLocation extends React.Component {
             getDefaultValue={() => defaultValueMap}
             query={{
               // available options: https://developers.google.com/places/web-service/autocomplete
-              key: "AIzaSyAUk9begav92si1W6yVe39GlOO7Au2aB0A",
+              key: GOOGLEPLACES_API_KEY,
               language: "en" // language of the results
               // types: "(cities)" // default: 'geocode'
             }}
